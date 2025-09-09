@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load cart_extras %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="card shadow-lg p-4 rounded-4 border-0">
+        <div class="text-center">
+            <h2 class="text-success fw-bold">🎉 Order Confirmed!</h2>
+            <p class="text-muted">Thank you <strong>{{ order.name }}</strong> for shopping with <b>Mk Mart</b>.</p>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="mt-4 bg-light p-3 rounded-3">
+            <h5 class="fw-bold mb-3">📦 Order Summary</h5>
+            <p><strong>Order ID:</strong> #{{ order.id }}</p>
+            <p><strong>Total Paid:</strong> Rs. {{ order.total_price }}</p>
+            <p><strong>Payment Method:</strong> {{ order.payment_method }}</p>
+            <p><strong>Shipping Address:</strong> {{ order.address }}</p>
+        </div>
+
+        <!-- Items Table -->
+        <div class="mt-4">
+            <h5 class="fw-bold">🛍️ Purchased Items</h5>
+            <table class="table table-striped mt-2">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Product</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.items.all %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>Rs. {{ item.price }}</td>
+                        <td>Rs. {{ item.quantity|mul:item.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="text-end fw-bold fs-5 mt-2">
+                Grand Total: Rs. {{ order.total_price }}
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="text-center mt-4">
+            <a href="{% url 'products:product_list' %}" class="btn btn-orange btn-lg px-5 rounded-pill">
+                🛒 Continue Shopping
+            </a>
+            <a href="{% url 'orders:download_invoice' order.id %}" class="btn btn-orange btn-lg px-5 rounded-pill ms-2">
+                 Download 
+            </a>
+           
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

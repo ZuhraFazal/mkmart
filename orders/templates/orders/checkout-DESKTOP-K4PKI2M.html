@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Checkout</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+           {% for item in cart_items %} 
+            <tr>
+            <td>{{ item.product.name }}</td>
+            <td>Rs. {{ item.product.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>Rs. {{ item.total_price }}</td> 
+            </tr>
+            {% endfor %}
+
+                <td colspan="3" class="text-end"><strong>Total</strong></td>
+                <td><strong>Rs. {{ total }}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form method="POST" class="mt-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Phone</label>
+            <input type="text" name="phone" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Address</label>
+            <textarea name="address" class="form-control" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label>Payment Method</label>
+            <select name="payment" class="form-select">
+                <option value="COD">Cash on Delivery</option>
+                <option value="Card">Card</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Place Order</button>
+    </form>
+</div>
+{% endblock %}

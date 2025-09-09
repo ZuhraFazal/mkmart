@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Your Cart</h2>
+
+    {% if cart_items %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>Rs. {{ item.product.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>Rs. {{ item.total_price }}</td>
+                <td>
+                    <a href="{% url 'cart:increase_quantity' item.product.id %}" class="btn btn-sm btn-success">+</a>
+                    <a href="{% url 'cart:decrease_quantity' item.product.id %}" class="btn btn-sm btn-warning">-</a>
+                    <a href="{% url 'cart:remove_item' item.product.id %}" class="btn btn-sm btn-danger">Remove</a>
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="3" class="text-end"><strong>Total</strong></td>
+                <td colspan="2"><strong>Rs. {{ total }}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{% url 'orders:checkout' %}" class="btn btn-orange">Proceed to Checkout</a>
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}

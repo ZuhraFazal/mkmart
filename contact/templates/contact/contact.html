@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">📞 Contact Us</h2>
+
+    {% if success %}
+        <div class="alert alert-success">✅ Your message has been sent successfully!</div>
+    {% endif %}
+
+    <div class="row">
+        <!-- Form -->
+        <div class="col-md-7">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-orange mt-2">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-md-5">
+            <h5 class="text-orange">Our Office</h5>
+            <p>📍 Address: 100 South Main Suite 700 Kalispell MT 59901</p>
+            <p>📞 Phone: +14063515435</p>
+            <p>📧 Emai: ayeshaa00132@gmail.com</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

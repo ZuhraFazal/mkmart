@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Home - MK Mart{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section position-relative text-center text-white">
+    <!-- Background Image -->
+    <div class="hero-bg"></div>
+
+    <!-- Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Hero Content -->
+    <div class="hero-content d-flex flex-column justify-content-center align-items-center">
+        <h1 class="display-4 fw-bold">Why Shop With Us?</h1>
+        <p class="lead">Best Home, Kitchen & Beauty Products at unbeatable prices.</p>
+        <a href="/products/" class="btn btn-lg btn-orange mt-3">Shop Now</a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="container py-5 text-center">
+    <div class="row">
+        <div class="col-md-4">
+            <i class="bi bi-truck fs-1 text-orange"></i>
+            <h5 class="fw-bold mt-2">Fast Delivery</h5>
+            <p>Get your orders delivered quickly to your doorstep.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="bi bi-shield-check fs-1 text-orange"></i>
+            <h5 class="fw-bold mt-2">Trusted Quality</h5>
+            <p>We provide only the best quality products.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="bi bi-wallet2 fs-1 text-orange"></i>
+            <h5 class="fw-bold mt-2">Affordable Prices</h5>
+            <p>Shop more and save more with MK Mart.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
