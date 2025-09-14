@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-^emwu@kd1(7e%4@#cxfm76)9@h1z01&mi%#+cnsjqexe70&s8g
 DEBUG = True
 
 # ALLOWED_HOSTS = ['AyeshaArshad.vercel.com', 'mkmartusa.com']
-ALLOWED_HOSTS = ['AyeshaArshad.vercel.com', 'http://localhost:8080/']
+ALLOWED_HOSTS = ['.vercel.com', 'localhost']
 
 # Application definition
 
@@ -87,6 +88,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
