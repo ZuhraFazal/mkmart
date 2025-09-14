@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-^emwu@kd1(7e%4@#cxfm76)9@h1z01&mi%#+cnsjqexe70&s8g
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = False
 DEBUG = False
+ALLOWED_HOSTS = ['mkmart-static.vercel.app', 'mkmart-static-fyidcvr9k-zuhra-fazals-projects.vercel.app', 'localhost']
 
-# ALLOWED_HOSTS = ['AyeshaArshad.vercel.com', 'mkmartusa.com']
-ALLOWED_HOSTS = ['.vercel.com', 'localhost']
+#ALLOWED_HOSTS = ['.vercel.com', 'localhost']
 
 # Application definition
 
